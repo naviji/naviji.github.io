@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>2020 Google Summer of Code with Joplin | Welcome to Naveen’s homepage!</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="2020 Google Summer of Code with Joplin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A place for thoughts that are worth letting out" />
+<meta property="og:description" content="A place for thoughts that are worth letting out" />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
+<meta property="og:site_name" content="Welcome to Naveen’s homepage!" />
+<script type="application/ld+json">
+{"@type":"WebSite","headline":"2020 Google Summer of Code with Joplin","description":"A place for thoughts that are worth letting out","url":"http://localhost:4000/","name":"Welcome to Naveen’s homepage!","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=b02cc59eed6a61804248b414809aeace3353de94">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="/assets/js/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="/assets/css/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/naviji/naviji.github.io">View On GitHub</a></li>
+          
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Welcome to Naveen’s homepage!</h1>
+          <p>A place for thoughts that are worth letting out</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/naviji">naviji</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1 id="2020-google-summer-of-code-with-joplin">2020 Google Summer of Code with Joplin</h1>
+
+<h3 id="what-got-done">What got done</h3>
+
+<p>The project consisted of three parts:</p>
+<ol>
+  <li>Make search better by introducing additional search filters. (e.g., tags, notebook, type)</li>
+  <li>Make the ranking of search results better by implementing the <a href="https://en.wikipedia.org/wiki/Okapi_BM25">Okapi BM25</a> relevance function.</li>
+  <li>Make fuzzy search possible.</li>
+</ol>
+
+<h3 id="code-contributions">Code contributions</h3>
+
+<ol>
+  <li>
+    <p><a href="https://github.com/laurent22/joplin/pull/3213"><strong>All: Add search filters</strong></a><br />
+ Joplin’s search had been using the Full-Text Search(FTS) offered by SQLite directly. So though it was fast, it was not versatile. For example, we can’t restrict the search scope to a particular notebook or search based on tags.</p>
+
+    <p>The current search implementation fixes most of these problems. It provides a better abstraction over FTS, supporting many new filters. The documentation for the new search filters can be found <a href="https://github.com/laurent22/joplin#searching">here.</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/laurent22/joplin/pull/3454"><strong>All: Weigh notes using Okapi BM25 score</strong></a> <br />
+ Joplin used a ranking function based on the number of times the search query occurs in the note and how close they are.</p>
+
+    <p>But there are better ways to rank notes, considering not just the number of times a word appears, but how common it is. Words like “the” is in most notes, while words like “zebra” are not common and should be considered more relevant.</p>
+
+    <p>The new search implementation uses <a href="https://en.wikipedia.org/wiki/Okapi_BM25">Okapi BM25</a> as the ranking function. It ranks a set of documents based on the query terms appearing in each document, regardless of their proximity.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/laurent22/joplin/pull/3632"><strong>Desktop: Fuzzy search</strong></a><br />
+ We’ve added support for fuzzy search. It doesn’t replace the need to put * at the end if you want to do a prefix search. But it does let you be a bit more relaxed about the exact spelling. Searching for “tomatos” will also give you results for “tomatoes”. (This feature isn’t released yet, but will be soon)</p>
+  </li>
+</ol>
+
+<p>It was a pleasure working with <a href="https://github.com/laurent22">Laurent</a> and <a href="https://github.com/CalebJohn">Caleb</a>. They did an excellent job as mentors.</p>
+
+
+      </section>
+
+    </div>
+
+    
+  </body>
+</html>
